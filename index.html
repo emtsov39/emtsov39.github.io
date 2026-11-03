@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101d2b">
+  <meta name="description" content="Юрист в Калининграде. Анализ документов, оценка правовых рисков и судебных перспектив, подготовка документов и представительство в суде.">
+  <title>Павел Викторович — юрист в Калининграде</title>
+  <style>
+    :root {
+      --ink: #172536;
+      --ink-2: #22364a;
+      --gold: #b99a61;
+      --gold-light: #d8c49b;
+      --paper: #f5f2eb;
+      --paper-2: #ebe6dc;
+      --white: #fffefa;
+      --muted: #687482;
+      --line: rgba(23, 37, 54, .13);
+      --shadow: 0 18px 55px rgba(19, 34, 49, .10);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 11px;
+      color: var(--gold); font-size: 11px; font-weight: 800;
+      letter-spacing: .19em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 1px; background: currentColor; }
+    .topbar {
+      position: fixed; inset: 0 0 auto; z-index: 20;
+      background: rgba(16, 29, 43, .94); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(216,196,155,.22);
+    }
+    .nav {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 25px;
+    }
+    .brand { color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border: 1px solid var(--gold); color: var(--gold-light);
+      font-family: Georgia, serif; font-size: 21px;
+    }
+    .brand-text { display: grid; line-height: 1.15; }
+    .brand-text strong { font-family: Georgia, serif; font-size: 16px; font-weight: 500; letter-spacing: .04em; }
+    .brand-text small { color: #aeb9c3; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; margin-top: 5px; }
+    .nav-links { display: flex; align-items: center; gap: 27px; list-style: none; }
+    .nav-links a { color: #d9e0e5; text-decoration: none; font-size: 12px; transition: color .2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-phone { color: var(--gold-light); text-decoration: none; font-size: 13px; white-space: nowrap; }
+    .menu-toggle { display: none; border: 1px solid rgba(216,196,155,.4); color: var(--gold-light); background: transparent; padding: 8px 12px; font-size: 20px; cursor: pointer; }
+    .hero {
+      position: relative; overflow: hidden; color: var(--white);
+      background:
+        radial-gradient(ellipse at 78% 30%, rgba(185,154,97,.20), transparent 34%),
+        radial-gradient(ellipse at 8% 100%, rgba(72,103,126,.26), transparent 40%),
+        linear-gradient(118deg, #101d2b 0%, #1a2c3e 58%, #243b4c 100%);
+      padding: 154px 0 92px;
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 620px; height: 620px; right: -210px; top: 80px;
+      border: 1px solid rgba(216,196,155,.15); border-radius: 50%;
+      box-shadow: 0 0 0 42px rgba(216,196,155,.025), 0 0 0 90px rgba(216,196,155,.02);
+    }
+    .hero::after {
+      content: "§"; position: absolute; right: 11%; top: 18%;
+      color: rgba(216,196,155,.075); font-family: Georgia, serif; font-size: clamp(240px, 36vw, 510px);
+      line-height: 1; pointer-events: none;
+    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 70px; }
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif; font-weight: 400;
+      font-size: clamp(42px, 6vw, 70px); line-height: 1.08; letter-spacing: -.025em;
+      margin: 23px 0 22px; max-width: 760px;
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-lead { max-width: 650px; color: #d2dbe2; font-size: 17px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      min-height: 52px; padding: 0 25px; text-decoration: none; border: 1px solid var(--gold);
+      background: var(--gold); color: #172536; font-size: 12px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase; transition: .22s;
+    }
+    .btn:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,.35); }
+    .btn-outline:hover { color: var(--ink); }
+    .hero-note { margin-top: 24px; color: #aebbc5; font-size: 12px; }
+    .hero-card {
+      position: relative; justify-self: end; width: min(100%, 350px); min-height: 420px;
+      padding: 16px; border: 1px solid rgba(216,196,155,.45);
+      background: rgba(255,255,255,.045); box-shadow: 0 25px 70px rgba(0,0,0,.22);
+    }
+    .portrait {
+      width: 100%; height: 385px; display: block; object-fit: cover;
+      background: linear-gradient(145deg, #33495a, #172536);
+      border: 1px solid rgba(216,196,155,.2);
+    }
+    .portrait-caption { padding: 13px 4px 1px; color: #d4dce2; font-family: Georgia, serif; font-size: 14px; }
+    .portrait-caption span { display: block; color: var(--gold-light); font: 10px Inter, Arial, sans-serif; letter-spacing: .15em; text-transform: uppercase; margin-top: 4px; }
+    .facts { background: var(--white); border-bottom: 1px solid var(--line); }
+    .facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .fact { padding: 21px 26px; border-right: 1px solid var(--line); }
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border: 0; }
+    .fact strong { display: block; color: var(--ink); font-family: Georgia, serif; font-size: 21px; font-weight: 400; }
+    .fact span { color: var(--muted); font-size: 12px; }
+    section { padding: 58px 0; }
+    .section-head { max-width: 720px; margin: 0 auto 34px; text-align: center; }
+    .section-head h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.18; margin: 15px 0; }
+    .section-head p { color: var(--muted); font-size: 15px; }
+    .services-section { background: var(--paper); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service {
+      position: relative; min-height: 225px; padding: 24px 24px 21px;
+      background: var(--white); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(19,34,49,.035);
+      transition: transform .22s, box-shadow .22s, border-color .22s;
+    }
+    .service:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: rgba(185,154,97,.65); }
+    .service-number { color: var(--gold); font-family: Georgia, serif; font-size: 14px; letter-spacing: .08em; }
+    .service h3 { font-family: Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.25; margin: 18px 0 12px; }
+    .service p { color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .service-link { display: inline-block; margin-top: 18px; color: #8a6d3d; text-decoration: none; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .service-link:hover { text-decoration: underline; }
+    .approach { color: var(--white); background: var(--ink); position: relative; overflow: hidden; }
+    .approach::after { content: "§"; position: absolute; right: 5%; bottom: -150px; font: 430px Georgia,serif; color: rgba(255,255,255,.025); }
+    .approach .section-head { position: relative; z-index: 1; }
+    .approach .section-head h2 { color: var(--white); }
+    .approach .section-head p { color: #b8c3cc; }
+    .steps { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4,1fr); gap: 25px; }
+    .step { border-top: 1px solid rgba(216,196,155,.55); padding-top: 20px; }
+    .step b { color: var(--gold-light); font: 26px Georgia,serif; }
+    .step h3 { margin: 13px 0 8px; font: 20px Georgia,serif; font-weight: 400; }
+    .step p { color: #b8c3cc; font-size: 13px; }
+    .about-section { background: var(--paper-2); }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+    .about-visual {
+      min-height: 370px; position: relative; padding: 35px;
+      background: linear-gradient(145deg, #1a2c3e, #30495b);
+      color: var(--white); display: flex; flex-direction: column; justify-content: end;
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .about-visual::before { content: "§"; position: absolute; right: 5px; top: -48px; color: rgba(216,196,155,.14); font: 330px Georgia,serif; }
+    .about-visual blockquote { position: relative; z-index: 1; font: 25px/1.4 Georgia,serif; }
+    .about-visual small { position: relative; z-index: 1; margin-top: 20px; color: var(--gold-light); letter-spacing: .13em; text-transform: uppercase; font-size: 10px; }
+    .about-copy h2 { font: 400 clamp(32px,4vw,45px)/1.2 Georgia,serif; margin: 14px 0 20px; }
+    .about-copy p { color: #536170; margin-bottom: 15px; font-size: 14px; }
+    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 20px; margin-top: 25px; }
+    .principle { display: flex; gap: 10px; align-items: flex-start; color: var(--ink); font-size: 13px; }
+    .principle::before { content: "?"; color: #9b7b45; font-weight: 800; }
+    .faq-section { background: var(--white); }
+    .faq { max-width: 850px; margin: 0 auto; }
+    details { border-bottom: 1px solid var(--line); padding: 16px 2px; }
+    summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font: 20px Georgia,serif; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--gold); font: 25px Arial,sans-serif; }
+    details[open] summary::after { content: "?"; }
+    details p { max-width: 760px; color: var(--muted); font-size: 14px; padding: 13px 35px 0 0; }
+    .contact-section { color: var(--white); background: linear-gradient(120deg, #101d2b, #263d4e); }
+    .contact-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 70px; align-items: center; }
+    .contact-copy h2 { font: 400 clamp(34px,4vw,48px)/1.15 Georgia,serif; margin: 16px 0; }
+    .contact-copy p { max-width: 560px; color: #c1ccd4; font-size: 15px; }
+    .contact-panel { padding: 30px; border: 1px solid rgba(216,196,155,.4); background: rgba(255,255,255,.045); }
+    .contact-row { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .contact-row:last-child { border: 0; }
+    .contact-row small { display: block; color: #aebbc5; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; }
+    .contact-row a, .contact-row span { display: inline-block; margin-top: 4px; color: var(--gold-light); text-decoration: none; font-size: 16px; }
+    .contact-row a:hover { text-decoration: underline; }
+    .contact-foot { margin-top: 22px; color: #aebbc5; font-size: 12px; }
+    footer { padding: 25px 0; background: #0b1520; color: #93a0aa; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-inner a { color: var(--gold-light); text-decoration: none; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 15px; }
+      .nav-phone { display: none; }
+      .hero-grid { gap: 35px; }
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .about-grid { gap: 35px; }
+    }
+    @media (max-width: 700px) {
+      section { padding: 54px 0; }
+      .wrap { width: min(100% - 32px, 560px); }
+      .nav { min-height: 66px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 66px; left: 0; right: 0;
+        padding: 18px 25px 23px; background: #101d2b; flex-direction: column; align-items: flex-start;
+        border-bottom: 1px solid rgba(216,196,155,.25);
+      }
+      .nav-links.open { display: flex; }
+      .hero { padding: 122px 0 62px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { justify-self: start; width: min(100%, 300px); min-height: auto; }
+      .portrait { height: 310px; }
+      .hero-lead { font-size: 15px; }
+      .facts-grid { grid-template-columns: 1fr; }
+      .fact, .fact:first-child { padding: 17px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .fact:last-child { border-bottom: 0; }
+      section { padding: 58px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service { min-height: auto; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 28px 18px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-visual { min-height: 300px; }
+      .principles { grid-template-columns: 1fr; }
+      summary { font-size: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <nav class="nav wrap" aria-label="Главная навигация">
+      <a class="brand" href="#top">
+        <span class="brand-mark">§</span>
+        <span class="brand-text"><strong>Павел Викторович</strong><small>Юридическая практика</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">?</button>
+      <ul class="nav-links">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#approach">Как работаю</a></li>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#faq">Вопросы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <a class="nav-phone" href="tel:+79218510325">+7 (921) 851-03-25</a>
+    </nav>
+  </div>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Юрист · Калининград и дистанционно</span>
+          <h1>Сначала разобраться.<br><span>Затем действовать.</span></h1>
+          <p class="hero-lead">Правовой анализ ситуации, оценка рисков и судебных перспектив, подготовка документов и представительство. Вникаю в обстоятельства дела и объясняю возможные варианты без обещаний гарантированного результата.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contacts">Обсудить мой вопрос <span>?</span></a>
+            <a class="btn btn-outline" href="#services">Посмотреть услуги</a>
+          </div>
+          <p class="hero-note">Личная работа с доверителем · Конфиденциальность · Понятные условия сотрудничества</p>
+        </div>
+        <div class="hero-card">
+          <img class="portrait" src="photo.jpg" alt="Фотография юриста Павла Викторовича" onerror="this.style.display='none'">
+          <div class="portrait-caption">Павел Викторович <span>Юрист · Калининград</span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="facts">
+      <div class="wrap facts-grid">
+        <div class="fact"><strong>Более 15 лет</strong><span>Заявленный профессиональный опыт</span></div>
+        <div class="fact"><strong>Лично</strong><span>Работаю с вопросом от анализа до результата</span></div>
+        <div class="fact"><strong>Калининград / РФ</strong><span>Личный приём и дистанционная работа</span></div>
+      </div>
+    </div>
+
+    <section class="services-section" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Направления практики</span>
+          <h2>Юридическая помощь<br>по конкретным задачам</h2>
+          <p>Можно обратиться как за отдельным документом или правовым заключением, так и за сопровождением вопроса на нескольких этапах.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service">
+            <span class="service-number">01 / СЕМЬЯ</span>
+            <h3>Семейные споры</h3>
+            <p>Расторжение брака, раздел имущества и долгов, алименты, определение места жительства ребёнка, порядок общения, установление и оспаривание отцовства, лишение и ограничение родительских прав.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">02 / НАСЛЕДСТВО</span>
+            <h3>Наследственные дела</h3>
+            <p>Восстановление срока принятия наследства, установление факта принятия, признание права собственности, споры между наследниками, обязательная доля, оспаривание завещаний.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">03 / НЕДВИЖИМОСТЬ</span>
+            <h3>Недвижимость и земельные вопросы</h3>
+            <p>Споры о праве собственности и пользовании жильём, долевая собственность, границы участков, аренда и выкуп земли, сделки с недвижимостью, защита интересов собственников.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">04 / СНТ И ЖКХ</span>
+            <h3>СНТ, коммунальные и жилищные споры</h3>
+            <p>Взносы и задолженность, решения общих собраний, электроснабжение и инфраструктура, отношения с управляющими организациями, начисления ЖКХ и споры о коммунальных услугах.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">05 / ПОТРЕБИТЕЛИ</span>
+            <h3>Защита прав потребителей</h3>
+            <p>Возврат денег за некачественные товары и услуги, нарушение сроков выполнения работ, недостатки строительства и ремонта, неустойка, убытки, компенсация морального вреда.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">06 / ДОГОВОРЫ</span>
+            <h3>Договоры и обязательства</h3>
+            <p>Подготовка и проверка договоров, анализ условий и правовых рисков, взыскание задолженности, расторжение и изменение договоров, претензионная работа.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">07 / СУД</span>
+            <h3>Судебное представительство</h3>
+            <p>Подготовка исков, отзывов, возражений и ходатайств; формирование правовой позиции; участие в судах общей юрисдикции и арбитражных судах в пределах компетенции и договорённостей.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">08 / ДОЛГИ</span>
+            <h3>Долги и исполнительное производство</h3>
+            <p>Отмена судебных приказов, возражения и обжалование судебных актов, вопросы взыскания и исполнения, взаимодействие с ФССП, анализ действий судебного пристава.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+          <article class="service">
+            <span class="service-number">09 / ТРУД</span>
+            <h3>Трудовые споры</h3>
+            <p>Незаконное увольнение, невыплата заработной платы и компенсаций, изменение условий труда, дисциплинарные взыскания, подготовка обращений и документов.</p>
+            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Порядок работы</span>
+          <h2>Понятный процесс<br>без лишних обещаний</h2>
+          <p>До начала работы важно понять не только, что можно сделать, но и какие существуют ограничения, риски и расходы.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><b>01</b><h3>Обсуждаем ситуацию</h3><p>Вы рассказываете обстоятельства и формулируете, какого результата хотите добиться.</p></div>
+          <div class="step"><b>02</b><h3>Изучаю документы</h3><p>Проверяю факты, документы, применимые нормы и возможные возражения другой стороны.</p></div>
+          <div class="step"><b>03</b><h3>Определяем стратегию</h3><p>Обсуждаем варианты действий, перспективы, сроки, стоимость и возможные риски.</p></div>
+          <div class="step"><b>04</b><h3>Выполняю поручение</h3><p>Готовлю документы, веду переговоры или представляю интересы в согласованном объёме.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual">
+          <blockquote>«Хорошая правовая позиция начинается не с громких слов, а с внимательного изучения обстоятельств и документов».</blockquote>
+          <small>Подход к юридической работе</small>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">О специалисте</span>
+          <h2>Личная ответственность за каждое поручение</h2>
+          <p>Меня зовут Павел Викторович. Я практикующий юрист в Калининграде. В работе для меня важны точность, последовательность и честный разговор о перспективах.</p>
+          <p>Не предлагаю универсальных решений до изучения ситуации. Сначала разбираюсь в документах и фактах, затем объясняю возможные правовые механизмы и предлагаю план действий.</p>
+          <p>Работаю с частными лицами и организациями. Возможны разовые консультации, подготовка отдельных документов, правовая экспертиза и комплексное сопровождение.</p>
+          <div class="principles">
+            <div class="principle">Личное ведение поручения</div>
+            <div class="principle">Понятная стоимость до начала работы</div>
+            <div class="principle">Оценка рисков и альтернатив</div>
+            <div class="principle">Конфиденциальность общения</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Вопросы и ответы</span>
+          <h2>Перед обращением</h2>
+          <p>Коротко о том, как можно начать работу и чего ожидать от первой встречи.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Можно ли сначала просто проконсультироваться?</summary>
+            <p>Да. На первой консультации можно изложить ситуацию, задать вопросы и определить, какие документы необходимы для более предметного анализа. Если без изучения документов вывод сделать нельзя, это будет обозначено отдельно.</p>
+          </details>
+          <details>
+            <summary>Нужно ли сразу приезжать в офис?</summary>
+            <p>Нет. Первичное обсуждение возможно дистанционно. Документы можно предварительно направить в электронном виде, а формат дальнейшей работы согласовать отдельно.</p>
+          </details>
+          <details>
+            <summary>Вы гарантируете выигрыш дела?</summary>
+            <p>Нет. Итог спора зависит от обстоятельств, доказательств, применимого законодательства и оценки суда. Задача юриста — выстроить обоснованную правовую позицию, своевременно совершить необходимые действия и объяснить риски.</p>
+          </details>
+          <details>
+            <summary>Можно ли взыскать расходы на юриста с другой стороны?</summary>
+            <p>В предусмотренных законом случаях судебные расходы на представителя могут быть взысканы с другой стороны. Вопрос решается судом с учётом документального подтверждения расходов, разумности их размера и обстоятельств дела. Полное возмещение не гарантируется.</p>
+          </details>
+          <details>
+            <summary>Работаете ли вы с вопросами из других регионов?</summary>
+            <p>Да, часть юридических задач можно решать дистанционно: анализ документов, подготовка процессуальных и иных документов, консультации. Возможность личного участия в конкретном деле обсуждается отдельно.</p>
+          </details>
+          <details>
+            <summary>Сколько стоят юридические услуги?</summary>
+            <p>Стоимость зависит от сложности вопроса, объёма документов, срочности и необходимого объёма работы. После предварительного обсуждения можно определить состав поручения и согласовать цену до его начала.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacts">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <span class="eyebrow">Связаться со мной</span>
+          <h2>Начните с обсуждения вашей ситуации</h2>
+          <p>Позвоните или напишите на электронную почту. Я уточню обстоятельства и скажу, какие документы стоит подготовить для первичного анализа.</p>
+          <div class="hero-actions">
+            <a class="btn" href="tel:+79218510325">Позвонить</a>
+            <a class="btn btn-outline" href="mailto:Pavel_Emtsov@mail.ru">Написать на email</a>
+          </div>
+          <p class="contact-foot">Первичное обращение не означает автоматического заключения договора или принятия поручения.</p>
+        </div>
+        <div class="contact-panel">
+          <div class="contact-row"><small>Телефон</small><a href="tel:+79218510325">+7 (921) 851-03-25</a></div>
+          <div class="contact-row"><small>Электронная почта</small><a href="mailto:Pavel_Emtsov@mail.ru">Pavel_Emtsov@mail.ru</a></div>
+          <div class="contact-row"><small>MAX</small><a href="https://max.ru/" target="_blank" rel="noopener noreferrer">+7 (921) 851-03-25</a></div>
+          <div class="contact-row">
+  <small>Адреса для личного приёма</small>
+  <span>г. Калининград, ул. Рихарда Зорге, д. 1</span>
+  <span>г. Калининград, Московский проспект, д. 12</span>
+  <span>г. Калининград, бульвар Любови Шевцовой, д. 58</span>
+  <small style="margin-top: 10px;">Приём по предварительной записи</small>
+</div>
+          <div class="contact-row"><small>География работы</small><span>Калининград и дистанционно по России</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> Павел Викторович · Юридическая практика</span>
+      <span>Информация на сайте носит общий характер и не является юридическим заключением по конкретному делу.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? '?' : '?';
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = '?';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
