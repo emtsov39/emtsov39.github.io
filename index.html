@@ -235,8 +235,24 @@
       width: 100%; height: 380px; overflow: hidden;
       border: 1px solid rgba(216,196,155,.35); border-radius: 8px;
     }
-    .map-container iframe { display: block; width: 100%; height: 100%; border: 0; }
-    .map-link { margin-top: 12px; text-align: right; font-size: 12px; }
+#contactMap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #e8e5dc;
+}
+
+.leaflet-popup-content {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.leaflet-popup-content a {
+  color: #80643a;
+  font-weight: bold;
+}    .map-link { margin-top: 12px; text-align: right; font-size: 12px; }
     .map-link a { color: var(--gold-light); text-decoration: none; }
     .map-link a:hover { text-decoration: underline; }
     .contact-addresses span { display: block; margin-top: 7px; font-size: 14px; }
@@ -513,14 +529,9 @@
         <div class="map-section">
           <h2 class="map-heading">Калининград и встречи с клиентами</h2>
           <p class="map-description">Работаю с клиентами в Калининграде и дистанционно по России. Личная встреча возможна по предварительной договорённости в удобной для вас части города.</p>
-          <div class="map-container">
-            <iframe
-              src="https://www.openstreetmap.org/export/embed?bbox=20.388565063476566%2C54.66430090574764%2C20.580139160156254%2C54.72511587001936&amp;layer=mapnik"
-              loading="lazy"
-              title="Карта Калининграда"
-              allowfullscreen>
-            </iframe>
-          </div>
+         <div class="map-container">
+  <div id="contactMap" aria-label="Интерактивная карта Калининграда"></div>
+</div>
           <div class="map-link"><a href="https://www.openstreetmap.org/#map=13/54.69472/20.48435" target="_blank" rel="noopener noreferrer">Открыть карту в OpenStreetMap ↗</a></div>
         </div>
         <div class="contact-grid">
@@ -608,5 +619,92 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+<!-- Библиотека интерактивной карты Leaflet -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  crossorigin=""
+>
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  crossorigin="">
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const mapElement = document.getElementById('contactMap');
+
+  if (!mapElement || typeof L === 'undefined') {
+    return;
+  }
+
+  // Адреса мест для личного приёма
+  const locations = [
+    {
+      title: 'ул. Рихарда Зорге, д. 1',
+      lat: 54.709486,
+      lon: 20.580520
+    },
+    {
+      title: 'Московский проспект, д. 12',
+      lat: 54.710141,
+      lon: 20.496141
+    },
+    {
+      title: 'бульвар Любови Шевцовой, д. 58',
+      lat: 54.6715,
+      lon: 20.5057
+    }
+  ];
+
+  // Создаём карту
+  const map = L.map('contactMap', {
+    scrollWheelZoom: false
+  });
+
+  // Подключаем карту OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Добавляем три отметки
+  const markers = locations.map(function (place) {
+
+    const marker = L.marker([place.lat, place.lon]).addTo(map);
+
+    marker.bindPopup(
+      '<strong>Место приёма</strong><br>' +
+      place.title +
+      '<br><br>' +
+      '<a href="https://www.openstreetmap.org/?mlat=' +
+      place.lat +
+      '&mlon=' +
+      place.lon +
+      '#map=18/' +
+      place.lat +
+      '/' +
+      place.lon +
+      '" target="_blank" rel="noopener noreferrer">' +
+      'Открыть точку на карте ↗</a>'
+    );
+
+    return marker;
+  });
+
+  // Автоматически показываем все три отметки
+  const group = L.featureGroup(markers);
+
+  map.fitBounds(group.getBounds().pad(0.15));
+
+  // Корректируем отображение карты
+  setTimeout(function () {
+    map.invalidateSize();
+  }, 300);
+
+});
+</script>
 </body>
 </html>
