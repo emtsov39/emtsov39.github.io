@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -158,14 +158,14 @@
     .about-copy p { color: #536170; margin-bottom: 15px; font-size: 14px; }
     .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 20px; margin-top: 25px; }
     .principle { display: flex; gap: 10px; align-items: flex-start; color: var(--ink); font-size: 13px; }
-    .principle::before { content: "?"; color: #9b7b45; font-weight: 800; }
+    .principle::before { content: "✓"; color: #9b7b45; font-weight: 800; }
     .faq-section { background: var(--white); }
     .faq { max-width: 850px; margin: 0 auto; }
     details { border-bottom: 1px solid var(--line); padding: 16px 2px; }
     summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font: 20px Georgia,serif; }
     summary::-webkit-details-marker { display: none; }
     summary::after { content: "+"; color: var(--gold); font: 25px Arial,sans-serif; }
-    details[open] summary::after { content: "?"; }
+    details[open] summary::after { content: "−"; }
     details p { max-width: 760px; color: var(--muted); font-size: 14px; padding: 13px 35px 0 0; }
     .contact-section { color: var(--white); background: linear-gradient(120deg, #101d2b, #263d4e); }
     .contact-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 70px; align-items: center; }
@@ -181,6 +181,72 @@
     footer { padding: 25px 0; background: #0b1520; color: #93a0aa; font-size: 11px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .footer-inner a { color: var(--gold-light); text-decoration: none; }
+
+    /* Отзывы клиентов */
+    .reviews-section { background: var(--white); }
+    .reviews-grid {
+      display: grid; grid-template-columns: 1.35fr .85fr;
+      gap: 22px; align-items: start;
+    }
+    .review-card {
+      background: #fff; border: 1px solid rgba(185,154,97,.28);
+      box-shadow: 0 14px 38px rgba(19,34,49,.07);
+      padding: 18px; transition: transform .2s, box-shadow .2s;
+    }
+    .review-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .review-card.featured { border-top: 3px solid var(--gold); }
+    .review-image-button {
+      display: block; width: 100%; border: 0; padding: 0;
+      background: transparent; cursor: zoom-in; text-align: left;
+    }
+    .review-image { display: block; width: 100%; height: auto; }
+    .review-hint { margin-top: 10px; color: var(--muted); font-size: 11px; text-align: right; }
+    .review-stars { color: #e5aa22; letter-spacing: 2px; font-size: 19px; margin-bottom: 10px; }
+    .review-meta { margin-top: 10px; color: var(--muted); font-size: 12px; }
+    .review-note { margin-top: 26px; text-align: center; color: var(--muted); font-size: 13px; }
+
+    /* Просмотр оригинала отзыва */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 100;
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(5,12,20,.88);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      display: block; max-width: min(1100px, 96vw);
+      max-height: 90vh; width: auto; height: auto;
+      object-fit: contain; background: white; box-shadow: 0 20px 70px #0008;
+    }
+    .lightbox-close {
+      position: absolute; top: 18px; right: 24px; color: white;
+      background: transparent; border: 1px solid #ffffff80;
+      width: 44px; height: 44px; font-size: 28px; cursor: pointer;
+    }
+
+    /* Карта */
+    .map-section {
+      margin-bottom: 42px; padding: 24px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(216,196,155,.3);
+    }
+    .map-heading { margin-bottom: 12px; font: 400 30px Georgia,serif; color: var(--white); }
+    .map-description { margin-bottom: 18px; color: #c1ccd4; font-size: 14px; }
+    .map-container {
+      width: 100%; height: 380px; overflow: hidden;
+      border: 1px solid rgba(216,196,155,.35); border-radius: 8px;
+    }
+    .map-container iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .map-link { margin-top: 12px; text-align: right; font-size: 12px; }
+    .map-link a { color: var(--gold-light); text-decoration: none; }
+    .map-link a:hover { text-decoration: underline; }
+    .contact-addresses span { display: block; margin-top: 7px; font-size: 14px; }
+    @media (max-width: 700px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .map-section { padding: 14px; }
+      .map-container { height: 300px; }
+      .review-card { padding: 12px; }
+    }
+
     @media (max-width: 900px) {
       .nav-links { gap: 15px; }
       .nav-phone { display: none; }
@@ -223,17 +289,19 @@
   </style>
 </head>
 <body>
+  <!-- Перед публикацией замените контактные данные и проверьте все сведения о себе. -->
   <div class="topbar">
     <nav class="nav wrap" aria-label="Главная навигация">
       <a class="brand" href="#top">
         <span class="brand-mark">§</span>
         <span class="brand-text"><strong>Павел Викторович</strong><small>Юридическая практика</small></span>
       </a>
-      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">?</button>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button>
       <ul class="nav-links">
         <li><a href="#services">Услуги</a></li>
         <li><a href="#approach">Как работаю</a></li>
         <li><a href="#about">Обо мне</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
         <li><a href="#faq">Вопросы</a></li>
         <li><a href="#contacts">Контакты</a></li>
       </ul>
@@ -249,12 +317,13 @@
           <h1>Сначала разобраться.<br><span>Затем действовать.</span></h1>
           <p class="hero-lead">Правовой анализ ситуации, оценка рисков и судебных перспектив, подготовка документов и представительство. Вникаю в обстоятельства дела и объясняю возможные варианты без обещаний гарантированного результата.</p>
           <div class="hero-actions">
-            <a class="btn" href="#contacts">Обсудить мой вопрос <span>?</span></a>
+            <a class="btn" href="#contacts">Обсудить мой вопрос <span>↗</span></a>
             <a class="btn btn-outline" href="#services">Посмотреть услуги</a>
           </div>
           <p class="hero-note">Личная работа с доверителем · Конфиденциальность · Понятные условия сотрудничества</p>
         </div>
         <div class="hero-card">
+          <!-- Положите фотографию рядом с index.html и назовите её photo.jpg. Если фото нет, блок можно удалить. -->
           <img class="portrait" src="photo.jpg" alt="Фотография юриста Павла Викторовича" onerror="this.style.display='none'">
           <div class="portrait-caption">Павел Викторович <span>Юрист · Калининград</span></div>
         </div>
@@ -281,55 +350,55 @@
             <span class="service-number">01 / СЕМЬЯ</span>
             <h3>Семейные споры</h3>
             <p>Расторжение брака, раздел имущества и долгов, алименты, определение места жительства ребёнка, порядок общения, установление и оспаривание отцовства, лишение и ограничение родительских прав.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">02 / НАСЛЕДСТВО</span>
             <h3>Наследственные дела</h3>
             <p>Восстановление срока принятия наследства, установление факта принятия, признание права собственности, споры между наследниками, обязательная доля, оспаривание завещаний.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">03 / НЕДВИЖИМОСТЬ</span>
             <h3>Недвижимость и земельные вопросы</h3>
             <p>Споры о праве собственности и пользовании жильём, долевая собственность, границы участков, аренда и выкуп земли, сделки с недвижимостью, защита интересов собственников.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">04 / СНТ И ЖКХ</span>
             <h3>СНТ, коммунальные и жилищные споры</h3>
             <p>Взносы и задолженность, решения общих собраний, электроснабжение и инфраструктура, отношения с управляющими организациями, начисления ЖКХ и споры о коммунальных услугах.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">05 / ПОТРЕБИТЕЛИ</span>
             <h3>Защита прав потребителей</h3>
             <p>Возврат денег за некачественные товары и услуги, нарушение сроков выполнения работ, недостатки строительства и ремонта, неустойка, убытки, компенсация морального вреда.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">06 / ДОГОВОРЫ</span>
             <h3>Договоры и обязательства</h3>
             <p>Подготовка и проверка договоров, анализ условий и правовых рисков, взыскание задолженности, расторжение и изменение договоров, претензионная работа.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">07 / СУД</span>
             <h3>Судебное представительство</h3>
             <p>Подготовка исков, отзывов, возражений и ходатайств; формирование правовой позиции; участие в судах общей юрисдикции и арбитражных судах в пределах компетенции и договорённостей.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">08 / ДОЛГИ</span>
             <h3>Долги и исполнительное производство</h3>
             <p>Отмена судебных приказов, возражения и обжалование судебных актов, вопросы взыскания и исполнения, взаимодействие с ФССП, анализ действий судебного пристава.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
           <article class="service">
             <span class="service-number">09 / ТРУД</span>
             <h3>Трудовые споры</h3>
             <p>Незаконное увольнение, невыплата заработной платы и компенсаций, изменение условий труда, дисциплинарные взыскания, подготовка обращений и документов.</p>
-            <a class="service-link" href="#contacts">Обсудить задачу ?</a>
+            <a class="service-link" href="#contacts">Обсудить задачу ↗</a>
           </article>
         </div>
       </div>
@@ -373,6 +442,36 @@
       </div>
     </section>
 
+
+    <section class="reviews-section" id="reviews">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Мнение клиентов</span>
+          <h2>Отзывы о работе</h2>
+          <p>Опыт взаимодействия клиентов — важная часть профессиональной репутации.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card featured">
+            <div class="review-stars" aria-label="5 из 5 звёзд">★★★★★</div>
+            <button class="review-image-button" type="button" data-review-image="review-1.png" aria-label="Увеличить отзыв Юлии">
+              <img class="review-image" src="review-1.png" alt="Отзыв Юлии от 30 апреля 2025 года" loading="lazy">
+            </button>
+            <div class="review-meta">Юлия · 30 апреля 2025 года</div>
+            <div class="review-hint">Нажмите, чтобы увеличить оригинал</div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 из 5 звёзд">★★★★★</div>
+            <button class="review-image-button" type="button" data-review-image="review-2.png" aria-label="Увеличить отзыв Татьяны">
+              <img class="review-image" src="review-2.png" alt="Отзыв Татьяны от 20 декабря 2025 года" loading="lazy">
+            </button>
+            <div class="review-meta">Татьяна · 20 декабря 2025 года</div>
+            <div class="review-hint">Нажмите, чтобы увеличить оригинал</div>
+          </article>
+        </div>
+        <p class="review-note">Отзывы размещены в оригинальном виде. Новые отзывы будут добавлены в этот раздел.</p>
+      </div>
+    </section>
+
     <section class="faq-section" id="faq">
       <div class="wrap">
         <div class="section-head">
@@ -410,7 +509,21 @@
     </section>
 
     <section class="contact-section" id="contacts">
-      <div class="wrap contact-grid">
+      <div class="wrap">
+        <div class="map-section">
+          <h2 class="map-heading">Калининград и встречи с клиентами</h2>
+          <p class="map-description">Работаю с клиентами в Калининграде и дистанционно по России. Личная встреча возможна по предварительной договорённости в удобной для вас части города.</p>
+          <div class="map-container">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed?bbox=20.388565063476566%2C54.66430090574764%2C20.580139160156254%2C54.72511587001936&amp;layer=mapnik"
+              loading="lazy"
+              title="Карта Калининграда"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="map-link"><a href="https://www.openstreetmap.org/#map=13/54.69472/20.48435" target="_blank" rel="noopener noreferrer">Открыть карту в OpenStreetMap ↗</a></div>
+        </div>
+        <div class="contact-grid">
         <div class="contact-copy">
           <span class="eyebrow">Связаться со мной</span>
           <h2>Начните с обсуждения вашей ситуации</h2>
@@ -425,15 +538,16 @@
           <div class="contact-row"><small>Телефон</small><a href="tel:+79218510325">+7 (921) 851-03-25</a></div>
           <div class="contact-row"><small>Электронная почта</small><a href="mailto:Pavel_Emtsov@mail.ru">Pavel_Emtsov@mail.ru</a></div>
           <div class="contact-row"><small>MAX</small><a href="https://max.ru/" target="_blank" rel="noopener noreferrer">+7 (921) 851-03-25</a></div>
-          <div class="contact-row">
-  <small>Адреса для личного приёма</small>
-  <span>г. Калининград, ул. Рихарда Зорге, д. 1</span>
-  <span>г. Калининград, Московский проспект, д. 12</span>
-  <span>г. Калининград, бульвар Любови Шевцовой, д. 58</span>
-  <small style="margin-top: 10px;">Приём по предварительной записи</small>
-</div>
+          <div class="contact-row contact-addresses">
+            <small>Адреса для личного приёма</small>
+            <span>г. Калининград, ул. Рихарда Зорге, д. 1</span>
+            <span>г. Калининград, Московский проспект, д. 12</span>
+            <span>г. Калининград, бульвар Любови Шевцовой, д. 58</span>
+            <small style="margin-top: 10px;">Приём по предварительной записи</small>
+          </div>
           <div class="contact-row"><small>География работы</small><span>Калининград и дистанционно по России</span></div>
         </div>
+      </div>
       </div>
     </section>
   </main>
@@ -445,21 +559,50 @@
     </div>
   </footer>
 
+  <div class="lightbox" id="reviewLightbox" role="dialog" aria-modal="true" aria-label="Просмотр отзыва">
+    <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
+    <img src="" alt="Увеличенный оригинал отзыва">
+  </div>
+
   <script>
+    const lightbox = document.getElementById('reviewLightbox');
+    const lightboxImage = lightbox.querySelector('img');
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('[data-review-image]').forEach(button => {
+      button.addEventListener('click', () => {
+        lightboxImage.src = button.dataset.reviewImage;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+
     const menuButton = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.nav-links');
 
     menuButton.addEventListener('click', () => {
       const isOpen = menu.classList.toggle('open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.textContent = isOpen ? '?' : '?';
+      menuButton.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+      menuButton.textContent = isOpen ? '×' : '☰';
     });
 
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         menu.classList.remove('open');
         menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.textContent = '?';
+        menuButton.setAttribute('aria-label', 'Открыть меню');
+        menuButton.textContent = '☰';
       });
     });
 
