@@ -661,44 +661,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
-  // Создаём карту
+    // Создаём карту
   const map = L.map('contactMap', {
-    scrollWheelZoom: false
-  });
+    scrollWheelZoom: false,
+    attributionControl: false
+  }).setView([54.7104, 20.5100], 13);
 
   // Подключаем карту OpenStreetMap
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
-
-  // Добавляем три отметки
-  const markers = locations.map(function (place) {
-
-    const marker = L.marker([place.lat, place.lon]).addTo(map);
-
-    marker.bindPopup(
-      '<strong>Место приёма</strong><br>' +
-      place.title +
-      '<br><br>' +
-      '<a href="https://www.openstreetmap.org/?mlat=' +
-      place.lat +
-      '&mlon=' +
-      place.lon +
-      '#map=18/' +
-      place.lat +
-      '/' +
-      place.lon +
-      '" target="_blank" rel="noopener noreferrer">' +
-      'Открыть точку на карте ↗</a>'
-    );
-
-    return marker;
-  });
-  // Автоматически показываем все три отметки
-  const group = L.featureGroup(markers);
-
-  map.fitBounds(group.getBounds().pad(0.15));
 
   // Корректируем отображение карты
   setTimeout(function () {
