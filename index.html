@@ -195,10 +195,103 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 .reviews-section {
     background: var(--white);
     padding-bottom: 20px;
-}    .reviews-grid {
-      display: grid; grid-template-columns: 1.35fr .85fr;
-      gap: 22px; align-items: start;
+}    
+.reviews-carousel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    flex: 1;
+    padding: 8px 2px 16px;
+}
+
+.reviews-track::-webkit-scrollbar {
+    display: none;
+}
+
+.review-slide {
+    flex: 0 0 calc((100% - 40px) / 3);
+    scroll-snap-align: start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: var(--white);
+    border: 1px solid rgba(20, 35, 55, 0.10);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 4px 14px rgba(20, 35, 55, 0.07);
+}
+
+.review-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 430px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.reviews-arrow {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(20, 35, 55, 0.18);
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--navy);
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.reviews-arrow:hover {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.reviews-hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+@media (max-width: 800px) {
+    .review-slide {
+        flex: 0 0 calc((100% - 20px) / 2);
     }
+}
+
+@media (max-width: 520px) {
+    .reviews-carousel {
+        gap: 6px;
+    }
+
+    .reviews-arrow {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .reviews-track {
+        gap: 12px;
+    }
+
+    .review-slide {
+        flex: 0 0 100%;
+    }
+}
+
     .review-card {
       background: #fff; border: 1px solid rgba(185,154,97,.28);
       box-shadow: 0 14px 38px rgba(19,34,49,.07);
@@ -470,34 +563,59 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     </section>
 
 
-    <section class="reviews-section" id="reviews">
-      <div class="wrap">
+    
+<section class="reviews-section" id="reviews">
+    <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Мнение клиентов</span>
-          <h2>Отзывы о работе</h2>
-          <p>Опыт взаимодействия клиентов — важная часть профессиональной репутации.</p>
+            <div class="eyebrow">Отзывы</div>
+            <h2>Мнение клиентов</h2>
+            <p>Реальные отзывы людей, обратившихся за юридической помощью.</p>
         </div>
-        <div class="reviews-grid">
-          <article class="review-card featured">
-            <div class="review-stars" aria-label="5 из 5 звёзд">★★★★★</div>
-            <button class="review-image-button" type="button" data-review-image="review-1.png" aria-label="Увеличить отзыв Юлии">
-              <img class="review-image" src="review-1.png" alt="Отзыв Юлии от 30 апреля 2025 года" loading="lazy">
+
+        <div class="reviews-carousel">
+            <button class="reviews-arrow reviews-prev"
+                    type="button"
+                    aria-label="Предыдущие отзывы">
+                &#10094;
             </button>
-            <div class="review-meta">Юлия · 30 апреля 2025 года</div>
-            <div class="review-hint">Нажмите, чтобы увеличить оригинал</div>
-          </article>
-          <article class="review-card">
-            <div class="review-stars" aria-label="5 из 5 звёзд">★★★★★</div>
-            <button class="review-image-button" type="button" data-review-image="review-2.png" aria-label="Увеличить отзыв Татьяны">
-              <img class="review-image" src="review-2.png" alt="Отзыв Татьяны от 20 декабря 2025 года" loading="lazy">
+
+            <div class="reviews-track" id="reviewsTrack">
+
+                <a class="review-slide" href="review-1.png" target="_blank">
+                    <img src="review-1.png" alt="Отзыв клиента 1">
+                </a>
+
+                <a class="review-slide" href="review-2.png" target="_blank">
+                    <img src="review-2.png" alt="Отзыв клиента 2">
+                </a>
+
+                <a class="review-slide" href="review-3.png" target="_blank">
+                    <img src="review-3.png" alt="Отзыв клиента 3">
+                </a>
+
+                <a class="review-slide" href="review-4.png" target="_blank">
+                    <img src="review-4.png" alt="Отзыв клиента 4">
+                </a>
+
+                <a class="review-slide" href="review-5.png" target="_blank">
+                    <img src="review-5.png" alt="Отзыв клиента 5">
+                </a>
+
+            </div>
+
+            <button class="reviews-arrow reviews-next"
+                    type="button"
+                    aria-label="Следующие отзывы">
+                &#10095;
             </button>
-            <div class="review-meta">Татьяна · 20 декабря 2025 года</div>
-            <div class="review-hint">Нажмите, чтобы увеличить оригинал</div>
-          </article>
         </div>
-        <p class="review-note">Отзывы размещены в оригинальном виде. Новые отзывы будут добавлены в этот раздел.</p>
-      </div>
-    </section>
+
+        <div class="reviews-hint">
+            Листайте отзывы или нажмите на изображение, чтобы увеличить его.
+        </div>
+    </div>
+</section>
+
 
     <section class="faq-section" id="faq">
       <div class="wrap">
@@ -691,6 +809,38 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <a href="policy.html">Политика обработки персональных данных</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.getElementById("reviewsTrack");
+    const prev = document.querySelector(".reviews-prev");
+    const next = document.querySelector(".reviews-next");
+
+    if (!track || !prev || !next) return;
+
+    function scrollReviews(direction) {
+        const slide = track.querySelector(".review-slide");
+        if (!slide) return;
+
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const distance = slide.getBoundingClientRect().width + gap;
+
+        track.scrollBy({
+            left: direction * distance,
+            behavior: "smooth"
+        });
+    }
+
+    prev.addEventListener("click", function () {
+        scrollReviews(-1);
+    });
+
+    next.addEventListener("click", function () {
+        scrollReviews(1);
+    });
+});
+</script>
+</body>
 
 </body>
 </html>
