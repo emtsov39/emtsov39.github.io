@@ -491,28 +491,123 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     outline-offset: 4px;
 }
 
+/* Бегущая строка под закреплённой шапкой */
+
+.running-line {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    background: transparent;
+}
+
+.running-line-track {
+    display: flex;
+    width: max-content;
+    animation: runningLineMove 65s linear infinite;
+}
+
+.running-line-content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 65px;
+    padding-right: 65px;
+    white-space: nowrap;
+}
+
+.running-line-content span {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+@keyframes runningLineMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .running-line-track {
+        animation: none;
+    }
+}
+
   </style>
 </head>
 <body>
   <!-- Перед публикацией замените контактные данные и проверьте все сведения о себе. -->
-  <div class="topbar">
-    <nav class="nav wrap" aria-label="Главная навигация">
-      <a class="brand" href="#top">
-        <span class="brand-mark">§</span>
-        <span class="brand-text"><strong>Павел Викторович</strong><small>Юридическая практика</small></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button>
-      <ul class="nav-links">
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#approach">Как работаю</a></li>
-        <li><a href="#about">Обо мне</a></li>
-        <li><a href="#reviews">Отзывы</a></li>
-        <li><a href="#faq">Вопросы</a></li>
-<li><a href="prices.html">Стоимость услуг</a></li>
-<li><a href="#contacts">Контакты</a></li>
-      </ul>
-      <a class="nav-phone" href="tel:+79218510325">+7 (921) 851-03-25</a>
-    </nav>
+  
+<div class="topbar">
+  <nav class="nav wrap" aria-label="Главная навигация">
+    <a class="brand" href="#top">
+      <span class="brand-mark">§</span>
+      <span class="brand-text"><strong>Павел Викторович</strong><small>Юридическая практика</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#approach">Как работаю</a></li>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+      <li><a href="prices.html">Стоимость услуг</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a class="nav-phone" href="tel:+79218510325">+7 (921) 851-03-25</a>
+  </nav>
+
+  <div class="running-line" aria-label="Информация о юридической практике">
+    <div class="running-line-track">
+      <div class="running-line-content">
+        <span>Более 15 лет юридической практики</span>
+        <span>Первичная юридическая консультация бесплатно</span>
+        <span>Личное участие юриста в каждом обращении</span>
+        <span>Честная оценка перспектив и правовых рисков</span>
+        <span>Конфиденциальность общения</span>
+        <span>Индивидуальные условия сотрудничества</span>
+		<span>Предусмотрена система скидок</span>
+		<span>Не откладывайте решение правового вопроса</span>
+        <span>Гибкие условия оплаты юридических услуг</span>
+      </div>
+      <div class="running-line-content" aria-hidden="true">
+        <span>Более 15 лет юридической практики</span>
+        <span>Первичная юридическая консультация бесплатно</span>
+        <span>Личное участие юриста в каждом обращении</span>
+        <span>Честная оценка перспектив и правовых рисков</span>
+        <span>Конфиденциальность общения</span>
+        <span>Индивидуальные условия сотрудничества</span>
+		<span>Предусмотрена система скидок</span>
+		<span>Не откладывайте решение правового вопроса</span>
+        <span>Гибкие условия оплаты юридических услуг</span>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+  <div class="running-line" aria-label="Информация о юридической практике">
+    <div class="running-line-track">
+      <div class="running-line-content">
+        <span>Более 15 лет юридической практики</span>
+        <span>Первичная юридическая консультация бесплатно</span>
+        <span>Личное участие юриста в каждом обращении</span>
+        <span>Честная оценка перспектив и правовых рисков</span>
+        <span>Конфиденциальность общения</span>
+        <span>Индивидуальные условия сотрудничества</span>
+      </div>
+      <div class="running-line-content" aria-hidden="true">
+        <span>Более 15 лет юридической практики</span>
+        <span>Первичная юридическая консультация бесплатно</span>
+        <span>Личное участие юриста в каждом обращении</span>
+        <span>Честная оценка перспектив и правовых рисков</span>
+        <span>Конфиденциальность общения</span>
+        <span>Индивидуальные условия сотрудничества</span>
+      </div>
+    </div>
   </div>
 
   <main id="top">
