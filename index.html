@@ -2,6 +2,9 @@
 <html lang="ru">
 <link rel="stylesheet"
 href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <head>
   <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -69,7 +72,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
         radial-gradient(ellipse at 78% 30%, rgba(185,154,97,.20), transparent 34%),
         radial-gradient(ellipse at 8% 100%, rgba(72,103,126,.26), transparent 40%),
         linear-gradient(118deg, #101d2b 0%, #1a2c3e 58%, #243b4c 100%);
-      padding: 154px 0 92px;
+      padding: 110px 0 92px;
     }
     .hero::before {
       content: ""; position: absolute; width: 620px; height: 620px; right: -210px; top: 80px;
@@ -123,7 +126,10 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     .section-head { max-width: 720px; margin: 0 auto 34px; text-align: center; }
     .section-head h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(32px, 4vw, 46px); line-height: 1.18; margin: 15px 0; }
     .section-head p { color: var(--muted); font-size: 15px; }
-    .services-section { background: var(--paper); }
+    .services-section {
+    background: var(--paper);
+    padding-top: 25px;
+}
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .service {
       position: relative; min-height: 225px; padding: 24px 24px 21px;
@@ -385,7 +391,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
         border-bottom: 1px solid rgba(216,196,155,.25);
       }
       .nav-links.open { display: flex; }
-      .hero { padding: 122px 0 62px; }
+      .hero { padding: 100px 0 62px; }
       .hero-grid { grid-template-columns: 1fr; }
       .hero-card { justify-self: start; width: min(100%, 300px); min-height: auto; }
       .portrait { height: 310px; }
@@ -531,7 +537,22 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
         animation: none;
     }
 }
+/* Уменьшение расстояния между услугами и порядком работы */
+.services-section {
+    padding-bottom: 25px;
+}
 
+.approach {
+    padding-top: 25px;
+}
+/* Уменьшение расстояния между принципами работы и отзывами */
+.about-section {
+    padding-bottom: 25px;
+}
+
+.reviews-section {
+    padding-top: 25px;
+}
   </style>
 </head>
 <body>
@@ -541,7 +562,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <nav class="nav wrap" aria-label="Главная навигация">
     <a class="brand" href="#top">
       <span class="brand-mark">§</span>
-      <span class="brand-text"><strong>Павел Викторович</strong><small>Юридическая практика</small></span>
+      <span class="brand-text"><strong>Емцов Павел Викторович</strong><small>Юридическая практика</small></span>
     </a>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button>
     <ul class="nav-links">
@@ -610,34 +631,44 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     </div>
   </div>
 
-  <main id="top">
+ 
+<main id="top">
     <header class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow">Юрист · Калининград и дистанционно</span>
-          <h1>Сначала разобраться.<br><span>Затем действовать.</span></h1>
+          <span class="eyebrow">Калининград · Область · Россия · Мир </span>
+
+
+<h1 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 3vw, 34px); line-height: 1.15; text-align: center; font-style: italic; font-weight: 600; letter-spacing: 0.3px;">
+  <span style="display:block; color:#ffffff;">ЮРИСТ:</span>
+  <span style="display:block; color:#0039A6;">ГРАМОТНОЕ РЕШЕНИЕ ЮРИДИЧЕСКИХ ПРОБЛЕМ</span>
+  <span style="display:block; color:#D52B1E;">СНАЧАЛА РАЗОБРАТЬСЯ - ПОТОМ ДЕЙСТВОВАТЬ</span>
+</h1>
+
+
           <p class="hero-lead">Правовой анализ ситуации, оценка рисков и судебных перспектив, подготовка документов и представительство. Вникаю в обстоятельства дела и объясняю возможные варианты развития событий.</p>
           <div class="hero-actions">
-            <a class="btn" href="#contacts">Обсудить мой вопрос <span>↗</span></a>
+            <a class="btn" href="#contacts">Бесплатная консультация <span>↗</span></a>
             <a class="btn btn-outline" href="#services">Посмотреть услуги</a>
           </div>
           <p class="hero-note">Личная работа с доверителем · Конфиденциальность · Понятные условия сотрудничества</p>
         </div>
         <div class="hero-card">
-          <!-- Положите фотографию рядом с index.html и назовите её photo.jpg. Если фото нет, блок можно удалить. -->
-          <img class="portrait" src="photo.jpg" alt="Фотография юриста Павла Викторовича" onerror="this.style.display='none'">
-          <div class="portrait-caption">Павел Викторович <span>Юрист · Калининград</span></div>
+          <img class="portrait" src="photo.jpg" alt="Фотография юриста Емцова Павла Викторовича" onerror="this.style.display='none'">
+          <div class="portrait-caption">Емцов Павел Викторович <span>Юрист · Калининград</span></div>
         </div>
       </div>
     </header>
 
     <div class="facts">
       <div class="wrap facts-grid">
-        <div class="fact"><strong>Более 15 лет</strong><span>Заявленный профессиональный опыт</span></div>
-        <div class="fact"><strong>Лично</strong><span>Работаю с вопросом от анализа до результата</span></div>
+        <div class="fact"><strong>Более 15 лет</strong><span>Юридической практики</span></div>
+        <div class="fact"><strong>Лично</strong><span>Работаю с каждым обращением</span></div>
         <div class="fact"><strong>Калининград / РФ</strong><span>Личный приём и дистанционная работа</span></div>
       </div>
     </div>
+
+
 
     <section class="services-section" id="services">
       <div class="wrap">
@@ -730,7 +761,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
         <div class="about-copy">
           <span class="eyebrow">О специалисте</span>
           <h2>Личная ответственность за каждое поручение</h2>
-          <p>Меня зовут Павел Викторович. Я практикующий юрист в Калининграде. В работе для меня важны точность, последовательность и честный разговор о перспективах.</p>
+          <p>Меня зовут Емцов Павел Викторович. Я практикующий юрист в Калининграде. В работе для меня важны точность, последовательность и честный разговор о перспективах.</p>
           <p>Не предлагаю универсальных решений до изучения ситуации. Сначала разбираюсь в документах и фактах, затем объясняю возможные правовые механизмы и предлагаю план действий.</p>
           <p>Работаю с частными лицами и организациями. Возможны разовые консультации, подготовка отдельных документов, правовая экспертиза и комплексное сопровождение.</p>
           <div class="principles">
@@ -974,7 +1005,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <footer>
     <div class="wrap footer-inner">
-      <span>© <span id="year">2026</span> Павел Викторович · Юридическая практика</span>
+      <span>© <span id="year">2026</span> Емцов Павел Викторович · Юридическая практика</span>
       <span>Информация на сайте носит общий характер и не является юридическим заключением по конкретному делу.</span>
     </div>
   </footer>
